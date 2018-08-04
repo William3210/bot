@@ -1,5 +1,7 @@
-const Discord = require("discord.js");
+const Discord = require('discord.js');
+
 const client = new Discord.Client();
+
 const fs = require("fs");
 client.commands = new Discord.Collection();
 
@@ -19,6 +21,8 @@ fs.readdir("./commands/", (err, files) => {
     client.commands.set(props.help.name, props);
   });
 });
+
+
 
 client.on("ready", async () => {
   console.log(`${client.user.username} is ready to kick ass!`);
@@ -53,4 +57,8 @@ client.on("message", async message => {
   if(commandfile) commandfile.run(client,message,args);
 });
 
-client.login(process.env.BOT_TOKEN);
+
+
+// THIS  MUST  BE  THIS  WAY
+
+client.login(process.env.BOT_TOKEN);//where BOT_TOKEN is the token of our bot
